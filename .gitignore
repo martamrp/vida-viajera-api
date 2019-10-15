@@ -42,6 +42,9 @@ build/
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Temporal files
+*.tmp
+
 # Package Files #
 *.zip
 *.tar.gz
