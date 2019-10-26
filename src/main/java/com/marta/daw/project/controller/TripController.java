@@ -21,23 +21,25 @@ public class TripController {
 
 	@RequestMapping(path="{userId}", method=RequestMethod.GET)
 	public List<Trip> getTrips(@PathVariable int userId) {
-		//return tripRepository.findByUserId(userId);
 		return tripRepository.findByUserId(userId);
 	}
-	/*
-	@RequestMapping(value="trip", method=RequestMethod.PUT)
-	public void update(@PathVariable int tripId, @RequestBody Trip trip) {
+	
+	@RequestMapping(path="{id}", method=RequestMethod.PUT)
+	public Trip updateTrip(@PathVariable int id, @RequestBody Trip trip) {
+		tripRepository.findById(id);
+		return tripRepository.save(trip);
 		
 	}
 	
-	@RequestMapping(value="trip", method=RequestMethod.DELETE)
-	public void delete(@PathVariable int tripId) {
-		
+	@RequestMapping(path="{id}", method=RequestMethod.DELETE)
+	public void deleteTrip(@PathVariable int id) {
+		tripRepository.deleteById(id);
 	}
 	
-	@RequestMapping(value="trip", method=RequestMethod.POST)
-	public void create(@RequestBody Trip trip) {
+	@RequestMapping(method=RequestMethod.POST)
+	public Trip createTrip(@RequestBody Trip trip) {
 		
-	}*/
+		return tripRepository.save(trip);
+	}
 	
 }

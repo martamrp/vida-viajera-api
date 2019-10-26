@@ -18,8 +18,8 @@ public class Trip {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-	@NotEmpty
+
+	@NotNull
 	private int userId;
 	
 	@NotEmpty

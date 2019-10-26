@@ -13,4 +13,6 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 	//Trip findByUserId(int userId);
 	//@Query("SELECT id, startDate, origin, destination FROM trip WHERE userId = :userId")
 	List<Trip> findByUserId(int userId);
+	
+	//List<Trip> findById(int id);
 }
