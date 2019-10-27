@@ -2,7 +2,10 @@ package com.marta.daw.project.controller;
 
 import java.util.List;
 
+import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,14 +35,19 @@ public class TripController {
 	}
 	
 	@RequestMapping(path="{id}", method=RequestMethod.DELETE)
-	public void deleteTrip(@PathVariable int id) {
-		tripRepository.deleteById(id);
+	public ResponseEntity<?> deleteTrip(@PathVariable int id) {
+		if(tripRepository.existsById(id)==true) {
+			tripRepository.deleteById(id);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
-	
+
 	@RequestMapping(method=RequestMethod.POST)
-	public Trip createTrip(@RequestBody Trip trip) {
-		
-		return tripRepository.save(trip);
+	public ResponseEntity<?> createTrip(@RequestBody Trip trip) {
+		Trip createdTrip = tripRepository.save(trip);
+		return new ResponseEntity<Trip>(createdTrip, HttpStatus.CREATED);
 	}
 	
 }
