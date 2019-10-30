@@ -1,9 +1,10 @@
 package com.marta.daw.project.controller;
 
+import java.util.Date;
 import java.util.List;
 
-import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,8 +47,23 @@ public class TripController {
 
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<?> createTrip(@RequestBody Trip trip) {
-		Trip createdTrip = tripRepository.save(trip);
-		return new ResponseEntity<Trip>(createdTrip, HttpStatus.CREATED);
+		Date startDate = trip.getStartDate();
+		Date endDate = trip.getEndDate();
+
+		if(endDate.before(startDate)) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			
+		}else if(tripRepository.findByReasonId(trip.getReasonId())==null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		
+		else {
+			Trip createdTrip = tripRepository.save(trip);
+			return new ResponseEntity<Trip>(createdTrip, HttpStatus.CREATED);
+		}	
 	}
+		
+		
+	
 	
 }
