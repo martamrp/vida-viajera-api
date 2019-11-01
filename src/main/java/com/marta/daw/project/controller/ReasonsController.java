@@ -11,8 +11,8 @@ import com.marta.daw.project.model.Reason;
 import com.marta.daw.project.model.ReasonRepository;
 
 @RestController
-@RequestMapping(path="reason")
-public class ReasonController {
+@RequestMapping(path="reasons")
+public class ReasonsController {
 	
 	@Autowired
 	ReasonRepository reasonRepository;
