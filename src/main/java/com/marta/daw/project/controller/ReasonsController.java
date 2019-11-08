@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.marta.daw.project.model.Reason;
-import com.marta.daw.project.model.ReasonRepository;
+import com.marta.daw.project.service.ReasonService;
 
 @RestController
 @RequestMapping(path="reasons")
 public class ReasonsController {
 	
 	@Autowired
-	ReasonRepository reasonRepository;
+	ReasonService reasonService;
 
 	@RequestMapping(method=RequestMethod.GET)
-	public List<Reason> getReasons(){
-		return reasonRepository.findAll();
-	};	
+	public List<Reason> showReasons(){
+		return reasonService.getReasons();
+	};	 
 }
