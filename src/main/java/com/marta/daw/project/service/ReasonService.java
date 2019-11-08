@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.marta.daw.project.model.Reason;
-import com.marta.daw.project.model.ReasonRepository;
+import com.marta.daw.project.repository.ReasonRepository;
 
 @Service
 public class ReasonService {

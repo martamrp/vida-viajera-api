@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.marta.daw.project.model.ReasonRepository;
+import com.marta.daw.project.repository.ReasonRepository;
 import com.marta.daw.project.model.Trip;
-import com.marta.daw.project.model.TripRepository;
-import com.marta.daw.project.model.UserRepository;
+import com.marta.daw.project.repository.TripRepository;
+import com.marta.daw.project.repository.UserRepository;
 import com.marta.daw.project.service.TripService;
 
 @RestController

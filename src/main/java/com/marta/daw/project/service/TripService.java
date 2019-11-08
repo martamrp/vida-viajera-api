@@ -8,10 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.marta.daw.project.model.ReasonRepository;
+import com.marta.daw.project.repository.ReasonRepository;
 import com.marta.daw.project.model.Trip;
-import com.marta.daw.project.model.TripRepository;
-import com.marta.daw.project.model.UserRepository;
+import com.marta.daw.project.repository.TripRepository;
+import com.marta.daw.project.repository.UserRepository;
 
 @Service
 public class TripService {

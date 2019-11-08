@@ -8,9 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.marta.daw.project.model.Login;
-import com.marta.daw.project.model.TripRepository;
+import com.marta.daw.project.repository.TripRepository;
 import com.marta.daw.project.model.User;
-import com.marta.daw.project.model.UserRepository;
+import com.marta.daw.project.repository.UserRepository;
 
 @Service
 public class UserService {
