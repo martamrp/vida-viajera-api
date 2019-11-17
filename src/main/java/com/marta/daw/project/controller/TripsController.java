@@ -2,6 +2,7 @@ package com.marta.daw.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import com.marta.daw.project.repository.TripRepository;
 import com.marta.daw.project.repository.UserRepository;
 import com.marta.daw.project.service.TripService;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "trips")
 public class TripsController {
@@ -29,19 +31,16 @@ public class TripsController {
 
 	@RequestMapping(path = "{id}", method = RequestMethod.PUT)
 	public ResponseEntity<?> updateTrip(@PathVariable int id, @RequestBody Trip trip) {
-
 		return tripService.updateTrip(id, trip);
 	}
 
 	@RequestMapping(path = "{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteTrip(@PathVariable int id) {
-
 		return tripService.deleteTrip(id);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> createTrip(@RequestBody Trip trip) {
-
 		return tripService.createTrip(trip);
 	}
 }

@@ -90,7 +90,7 @@ public class TripService {
 
 		if (tripRepository.existsByOriginAndDestinationAndStartDateAndEndDateAndUserId(trip.getOrigin(), trip.getDestination(),
 				trip.getStartDate(), trip.getEndDate(), trip.getUserId())) {
-			return new ResponseEntity<>("El viaje ya existe", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("El viaje ya existe", HttpStatus.CONFLICT);
 		}
 
 		Trip createdTrip = tripRepository.save(trip);

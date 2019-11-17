@@ -10,6 +10,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Trip {
 
@@ -29,9 +31,11 @@ public class Trip {
 	private String destination;
 	
 	@NotNull
+    @JsonFormat(pattern="yyyy-MM-dd")
 	private Date startDate;
 	
 	@NotNull
+    @JsonFormat(pattern="yyyy-MM-dd")
 	private Date endDate;
 	
 	@NotNull
