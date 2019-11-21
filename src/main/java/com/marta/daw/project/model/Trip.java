@@ -39,7 +39,36 @@ public class Trip {
 	private Date endDate;
 	
 	@NotNull
-	private int reasonId;
+	private int reasonId;	
+
+	@NotNull
+	private int precio;
+	
+	public int getPrecio() {
+		return precio;
+	}
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
+	public String getPais_origen() {
+		return pais_origen;
+	}
+	public void setPais_origen(String pais_origen) {
+		this.pais_origen = pais_origen;
+	}
+	public String getPais_destino() {
+		return pais_destino;
+	}
+	public void setPais_destino(String pais_destino) {
+		this.pais_destino = pais_destino;
+	}
+	@NotEmpty
+	@Size(min=1, max=2)
+	private String pais_origen;
+
+	@NotEmpty
+	@Size(min=1, max=2)
+	private String pais_destino;
 	
 	public int getId() {
 		return id;
