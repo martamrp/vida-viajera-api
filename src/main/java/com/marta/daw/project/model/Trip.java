@@ -42,33 +42,15 @@ public class Trip {
 	private int reasonId;	
 
 	@NotNull
-	private int precio;
+	private int price;
 	
-	public int getPrecio() {
-		return precio;
-	}
-	public void setPrecio(int precio) {
-		this.precio = precio;
-	}
-	public String getPais_origen() {
-		return pais_origen;
-	}
-	public void setPais_origen(String pais_origen) {
-		this.pais_origen = pais_origen;
-	}
-	public String getPais_destino() {
-		return pais_destino;
-	}
-	public void setPais_destino(String pais_destino) {
-		this.pais_destino = pais_destino;
-	}
 	@NotEmpty
 	@Size(min=1, max=2)
-	private String pais_origen;
+	private String originCountry;
 
 	@NotEmpty
 	@Size(min=1, max=2)
-	private String pais_destino;
+	private String destinationCountry;
 	
 	public int getId() {
 		return id;
@@ -111,5 +93,23 @@ public class Trip {
 	}
 	public void setReasonId(int reasonId) {
 		this.reasonId = reasonId;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public String getOriginCountry() {
+		return originCountry;
+	}
+	public void setOriginCountry(String originCountry) {
+		this.originCountry = originCountry;
+	}
+	public String getDestinationCountry() {
+		return destinationCountry;
+	}
+	public void setDestinationCountry(String destinationCountry) {
+		this.destinationCountry = destinationCountry;
 	}
 }
