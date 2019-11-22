@@ -54,10 +54,10 @@ public class TripService {
 			return new ResponseEntity<>("El usuario no existe", HttpStatus.BAD_REQUEST);
 		}
 
-		if (tripRepository.existsByOriginAndDestinationAndStartDateAndEndDateAndUserId(trip.getOrigin(), trip.getDestination(),
-				trip.getStartDate(), trip.getEndDate(), trip.getUserId())) {
-			return new ResponseEntity<>("El viaje ya existe", HttpStatus.BAD_REQUEST);
-		}
+		//if (tripRepository.existsByOriginAndDestinationAndStartDateAndEndDateAndUserId(trip.getOrigin(), trip.getDestination(),
+		//		trip.getStartDate(), trip.getEndDate(), trip.getUserId())) {
+		//	return new ResponseEntity<>("El viaje ya existe", HttpStatus.BAD_REQUEST);
+		//}
 
 		return new ResponseEntity<Trip>(tripRepository.save(trip), HttpStatus.OK);
 	}
