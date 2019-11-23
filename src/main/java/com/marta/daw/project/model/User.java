@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
-	//https://medium.com/better-programming/building-a-spring-boot-rest-api-part-iii-integrating-mysql-database-and-jpa-81391404046a
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;

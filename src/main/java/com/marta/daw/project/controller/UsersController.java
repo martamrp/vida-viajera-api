@@ -31,4 +31,9 @@ public class UsersController {
 	public ResponseEntity<?> getTripsByUserId(@PathVariable int id) {
 		return userService.getTripsByUserId(id);
 	}
+	
+	@RequestMapping(path = "{id}/stats", method = RequestMethod.GET)
+	public ResponseEntity<?> getStatsByUserId(@PathVariable int id){
+		return userService.getStatsByUserId(id);
+	}
 }
