@@ -6,6 +6,6 @@ CREATE TABLE trip (
 	destination VARCHAR(50) NOT NULL,
 	startDate DATE NOT NULL,
 	endDate DATE NOT NULL,
-    FOREIGN KEY (userId) REFERENCES user(id),
-    FOREIGN KEY (reasonId) REFERENCES reason(id)
+    CONSTRAINT FK_UserId FOREIGN KEY (userId) REFERENCES user(id),
+    CONSTRAINT FK_ReasonId FOREIGN KEY (reasonId) REFERENCES reason(id)
 );

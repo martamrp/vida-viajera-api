@@ -45,6 +45,8 @@ public class UserService {
 		UserStats userStats = new UserStats();
 		userStats.setCheaperTrip(tripRepository.findTopByUserIdOrderByPriceAsc(id));
 		userStats.setMoreExpensiveTrip(tripRepository.findTopByUserIdOrderByPriceDesc(id));
+		userStats.setLeisureTrip(tripRepository.findByUserIdAndReasonId(id, 1).size());
+		userStats.setBusinessTrip(tripRepository.findByUserIdAndReasonId(id, 3).size());
 		return new ResponseEntity<UserStats>(userStats, HttpStatus.OK);
 	}
 }

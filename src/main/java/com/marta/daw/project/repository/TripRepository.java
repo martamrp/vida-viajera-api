@@ -16,5 +16,5 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 	boolean existsByOriginAndDestinationAndStartDateAndEndDateAndUserId(String origin, String destination, Date startDate, Date endDate, int userId);
 	Trip findTopByUserIdOrderByPriceAsc(int userId);
 	Trip findTopByUserIdOrderByPriceDesc(int userId);
-
+	List<Trip> findByUserIdAndReasonId(int userId, int reasonId);
 }
