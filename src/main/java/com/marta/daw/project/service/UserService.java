@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.marta.daw.project.model.Login;
 import com.marta.daw.project.repository.TripRepository;
 import com.marta.daw.project.model.User;
+import com.marta.daw.project.model.UserStats;
 import com.marta.daw.project.repository.UserRepository;
 
 @Service
@@ -38,5 +39,12 @@ public class UserService {
 		}
 
 		return new ResponseEntity<>(tripRepository.findByUserId(id), HttpStatus.OK);
+	}
+
+	public ResponseEntity<?> getStatsByUserId(int id) {
+		UserStats userStats = new UserStats();
+		userStats.setCheaperTrip(tripRepository.findTopByUserIdOrderByPriceAsc(id));
+		userStats.setMoreExpensiveTrip(tripRepository.findTopByUserIdOrderByPriceDesc(id));
+		return new ResponseEntity<UserStats>(userStats, HttpStatus.OK);
 	}
 }
