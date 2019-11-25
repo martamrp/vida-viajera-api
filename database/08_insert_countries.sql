@@ -25,7 +25,7 @@ INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('BJ','1','9
 INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('BM','2','32.33333333','-64.75','Bermudas');
 INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('BT','4','27.5','90.5','Bután');
 INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('BO','2','-17.0','-65.0','Bolivia');
-INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('BQ','2','12.15','-68.266667','null');
+INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('BQ','2','12.15','-68.266667','Caribe Neerlandés');
 INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('BA','5','44.0','18.0','Bosnia y Herzegovina');
 INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('BW','1','-22.0','24.0','Botswana');
 INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('BR','2','-10.0','-55.0','Brasil');
@@ -55,7 +55,7 @@ INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('CK','6','-
 INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('CR','2','10.0','-84.0','Costa Rica');
 INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('HR','5','45.16666666','15.5','Croacia');
 INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('CU','2','21.5','-80.0','Cuba');
-INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('CW','2','12.116667','-68.933333','null');
+INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('CW','2','12.116667','-68.933333','Curasao');
 INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('CY','5','35.0','33.0','Chipre');
 INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('CZ','5','49.75','15.5','República Checa');
 INSERT INTO vidaviajera.country (code,regionId,lat,lng,name) VALUES ('DK','5','56.0','10.0','Dinamarca');

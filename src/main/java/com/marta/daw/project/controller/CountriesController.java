@@ -22,5 +22,5 @@ public class CountriesController {
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Country> getCountries(){
 		return countryService.getCountries();
-	};	
+	};
 }
