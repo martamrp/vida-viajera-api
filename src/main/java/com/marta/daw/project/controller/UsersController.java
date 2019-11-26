@@ -36,4 +36,9 @@ public class UsersController {
 	public ResponseEntity<?> getStatsByUserId(@PathVariable int id){
 		return userService.getStatsByUserId(id);
 	}
+	
+	@RequestMapping(path = "{id}/countries", method = RequestMethod.GET)
+	public ResponseEntity<?> getCountriesByUserId(@PathVariable int id){
+		return userService.getCountriesByUserId(id);
+	}
 }
