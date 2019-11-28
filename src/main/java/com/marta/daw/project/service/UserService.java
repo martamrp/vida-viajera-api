@@ -48,6 +48,10 @@ public class UserService {
 		userStats.setMoreExpensiveTrip(tripRepository.findTopByUserIdOrderByPriceDesc(id));
 		userStats.setLeisureTrip(tripRepository.findByUserIdAndReasonId(id, 1).size());
 		userStats.setBusinessTrip(tripRepository.findByUserIdAndReasonId(id, 3).size());
+		userStats.setShortestTrip(tripRepository.findTripsByUserIdOrderByDurationAsc(id).get(0));
+		userStats.setLongestTrip(tripRepository.findTripsByUserIdOrderByDurationDesc(id).get(0));
+		userStats.setCheapestTripPerDay(tripRepository.findTripsByUserIdOrderByPricePerDayAsc(id).get(0));
+		userStats.setMostExpensiveTripPerDay(tripRepository.findTripsByUserIdOrderByPricePerDayDesc(id).get(0));
 		return new ResponseEntity<UserStats>(userStats, HttpStatus.OK);
 	}
 
