@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.marta.daw.project.model.Login;
 import com.marta.daw.project.model.Trip;
+import com.marta.daw.project.repository.RegionRepository;
 import com.marta.daw.project.repository.TripRepository;
 import com.marta.daw.project.model.User;
 import com.marta.daw.project.model.UserStats;
@@ -22,6 +23,8 @@ public class UserService {
 	UserRepository userRepository;
 	@Autowired
 	TripRepository tripRepository;
+	@Autowired
+	RegionRepository regionRepository;
 
 	public ResponseEntity<?> login(Login login) {
 		List<User> userDB = userRepository.findByUsername(login.getUsername());
@@ -86,5 +89,13 @@ public class UserService {
 			}
 		}
 		return countries;
+	}
+
+	public ResponseEntity<?> getRegionsByUserId(int id) {
+		if (!userRepository.existsById(id)) {
+			return new ResponseEntity<>("El usuario no existe", HttpStatus.NOT_FOUND);
+		}
+
+		return new ResponseEntity<>(regionRepository.findRegionsByUserId(id), HttpStatus.OK);
 	}
 }

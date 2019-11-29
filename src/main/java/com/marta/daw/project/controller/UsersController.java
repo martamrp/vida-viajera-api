@@ -41,4 +41,9 @@ public class UsersController {
 	public ResponseEntity<?> getCountriesByUserId(@PathVariable int id){
 		return userService.getCountriesByUserId(id);
 	}
+	
+	@RequestMapping(path = "{id}/regions", method = RequestMethod.GET)
+	public ResponseEntity<?> getRegionsByUserId(@PathVariable int id){
+		return userService.getRegionsByUserId(id);
+	}
 }
