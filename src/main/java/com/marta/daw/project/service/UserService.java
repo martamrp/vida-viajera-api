@@ -46,16 +46,38 @@ public class UserService {
 		return new ResponseEntity<>(tripRepository.findByUserId(id), HttpStatus.OK);
 	}
 
-	public ResponseEntity<UserStats> getStatsByUserId(int id) {
+	public ResponseEntity<?> getStatsByUserId(int id) {
+		if (!userRepository.existsById(id)) {
+			return new ResponseEntity<>("El usuario no existe", HttpStatus.NOT_FOUND);
+		}
+		
 		UserStats userStats = new UserStats();
+		List<Trip> trips = null;
 		userStats.setCheapestTrip(tripRepository.findTopByUserIdOrderByPriceAsc(id));
 		userStats.setMostExpensiveTrip(tripRepository.findTopByUserIdOrderByPriceDesc(id));
 		userStats.setLeisureTrips(tripRepository.findByUserIdAndReasonId(id, 1).size());
 		userStats.setBusinessTrips(tripRepository.findByUserIdAndReasonId(id, 3).size());
-		userStats.setShortestTrip(tripRepository.findTripsByUserIdOrderByDurationAsc(id).get(0));
-		userStats.setLongestTrip(tripRepository.findTripsByUserIdOrderByDurationDesc(id).get(0));
-		userStats.setCheapestTripPerDay(tripRepository.findTripsByUserIdOrderByPricePerDayAsc(id).get(0));
-		userStats.setMostExpensiveTripPerDay(tripRepository.findTripsByUserIdOrderByPricePerDayDesc(id).get(0));
+		
+		trips = tripRepository.findTripsByUserIdOrderByDurationAsc(id);
+		if(!trips.isEmpty()) {
+			userStats.setShortestTrip(trips.get(0));	
+		}
+		
+		trips = tripRepository.findTripsByUserIdOrderByDurationDesc(id);
+		if(!trips.isEmpty()) {
+			userStats.setLongestTrip(trips.get(0));	
+		}
+		
+		trips = tripRepository.findTripsByUserIdOrderByPricePerDayAsc(id);
+		if(!trips.isEmpty()) {
+			userStats.setCheapestTripPerDay(trips.get(0));	
+		}
+		
+		trips = tripRepository.findTripsByUserIdOrderByPricePerDayDesc(id);
+		if(!trips.isEmpty()) {
+			userStats.setMostExpensiveTripPerDay(trips.get(0));	
+		}
+
 		return new ResponseEntity<>(userStats, HttpStatus.OK);
 	}
 

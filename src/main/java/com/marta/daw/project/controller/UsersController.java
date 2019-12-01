@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.marta.daw.project.model.Login;
 import com.marta.daw.project.model.User;
-import com.marta.daw.project.model.UserStats;
 import com.marta.daw.project.service.UserService;
 
 @CrossOrigin
@@ -35,7 +34,7 @@ public class UsersController {
 	}
 	
 	@RequestMapping(path = "{id}/stats", method = RequestMethod.GET)
-	public ResponseEntity<UserStats> getStatsByUserId(@PathVariable int id){
+	public ResponseEntity<?> getStatsByUserId(@PathVariable int id){
 		return userService.getStatsByUserId(id);
 	}
 	
