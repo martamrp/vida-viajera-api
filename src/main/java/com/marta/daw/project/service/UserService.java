@@ -48,10 +48,10 @@ public class UserService {
 
 	public ResponseEntity<UserStats> getStatsByUserId(int id) {
 		UserStats userStats = new UserStats();
-		userStats.setCheaperTrip(tripRepository.findTopByUserIdOrderByPriceAsc(id));
-		userStats.setMoreExpensiveTrip(tripRepository.findTopByUserIdOrderByPriceDesc(id));
-		userStats.setLeisureTrip(tripRepository.findByUserIdAndReasonId(id, 1).size());
-		userStats.setBusinessTrip(tripRepository.findByUserIdAndReasonId(id, 3).size());
+		userStats.setCheapestTrip(tripRepository.findTopByUserIdOrderByPriceAsc(id));
+		userStats.setMostExpensiveTrip(tripRepository.findTopByUserIdOrderByPriceDesc(id));
+		userStats.setLeisureTrips(tripRepository.findByUserIdAndReasonId(id, 1).size());
+		userStats.setBusinessTrips(tripRepository.findByUserIdAndReasonId(id, 3).size());
 		userStats.setShortestTrip(tripRepository.findTripsByUserIdOrderByDurationAsc(id).get(0));
 		userStats.setLongestTrip(tripRepository.findTripsByUserIdOrderByDurationDesc(id).get(0));
 		userStats.setCheapestTripPerDay(tripRepository.findTripsByUserIdOrderByPricePerDayAsc(id).get(0));

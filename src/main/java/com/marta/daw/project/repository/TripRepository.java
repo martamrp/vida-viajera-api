@@ -31,12 +31,4 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 	@Query("SELECT t FROM Trip t WHERE t.userId = ?1 ORDER BY t.price/(DATEDIFF(t.endDate, t.startDate)+1) DESC")
 	List<Trip> findTripsByUserIdOrderByPricePerDayDesc(int userId);
 
-	/*
-	@Query("SELECT YEAR(startDate) AS year, count(id) as trips " + 
-			"FROM Trip " + 
-			"GROUP BY year, UserId " + 
-			"HAVING userId=?1 " + 
-			"ORDER BY trips DESC " + 
-			"LIMIT 1")
-	int findYear(int userId);*/
 }

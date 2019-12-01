@@ -1,38 +1,38 @@
 package com.marta.daw.project.model;
 
 public class UserStats {
-	private Trip cheaperTrip;
-	private Trip moreExpensiveTrip;
-	private int leisureTrip;
-	private int businessTrip;
+	private Trip cheapestTrip;
+	private Trip mostExpensiveTrip;
+	private int leisureTrips;
+	private int businessTrips;
 	private Trip shortestTrip;
 	private Trip longestTrip;
 	private Trip cheapestTripPerDay;
 	private Trip mostExpensiveTripPerDay;
 	
-	public Trip getCheaperTrip() {
-		return cheaperTrip;
+	public Trip getCheapestTrip() {
+		return cheapestTrip;
 	}
-	public void setCheaperTrip(Trip cheaperTrip) {
-		this.cheaperTrip = cheaperTrip;
+	public void setCheapestTrip(Trip cheapestTrip) {
+		this.cheapestTrip = cheapestTrip;
 	}
-	public Trip getMoreExpensiveTrip() {
-		return moreExpensiveTrip;
+	public Trip getMostExpensiveTrip() {
+		return mostExpensiveTrip;
 	}
-	public void setMoreExpensiveTrip(Trip moreExpensiveTrip) {
-		this.moreExpensiveTrip = moreExpensiveTrip;
+	public void setMostExpensiveTrip(Trip mostExpensiveTrip) {
+		this.mostExpensiveTrip = mostExpensiveTrip;
 	}
-	public int getLeisureTrip() {
-		return leisureTrip;
+	public int getLeisureTrips() {
+		return leisureTrips;
 	}
-	public void setLeisureTrip(int leisureTrip) {
-		this.leisureTrip = leisureTrip;
+	public void setLeisureTrips(int leisureTrips) {
+		this.leisureTrips = leisureTrips;
 	}
-	public int getBusinessTrip() {
-		return businessTrip;
+	public int getBusinessTrips() {
+		return businessTrips;
 	}
-	public void setBusinessTrip(int businessTrip) {
-		this.businessTrip = businessTrip;
+	public void setBusinessTrips(int businessTrips) {
+		this.businessTrips = businessTrips;
 	}
 	public Trip getShortestTrip() {
 		return shortestTrip;
