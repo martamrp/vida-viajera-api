@@ -1,6 +1,7 @@
 package com.marta.daw.project.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class UserService {
 	@Autowired
 	RegionRepository regionRepository;
 
-	public ResponseEntity<?> login(Login login) {
+	public ResponseEntity<User> login(Login login) {
 		List<User> userDB = userRepository.findByUsername(login.getUsername());
 		if (userDB.isEmpty()) {
 			User user = new User();
@@ -45,7 +46,7 @@ public class UserService {
 		return new ResponseEntity<>(tripRepository.findByUserId(id), HttpStatus.OK);
 	}
 
-	public ResponseEntity<?> getStatsByUserId(int id) {
+	public ResponseEntity<UserStats> getStatsByUserId(int id) {
 		UserStats userStats = new UserStats();
 		userStats.setCheaperTrip(tripRepository.findTopByUserIdOrderByPriceAsc(id));
 		userStats.setMoreExpensiveTrip(tripRepository.findTopByUserIdOrderByPriceDesc(id));
@@ -55,7 +56,7 @@ public class UserService {
 		userStats.setLongestTrip(tripRepository.findTripsByUserIdOrderByDurationDesc(id).get(0));
 		userStats.setCheapestTripPerDay(tripRepository.findTripsByUserIdOrderByPricePerDayAsc(id).get(0));
 		userStats.setMostExpensiveTripPerDay(tripRepository.findTripsByUserIdOrderByPricePerDayDesc(id).get(0));
-		return new ResponseEntity<UserStats>(userStats, HttpStatus.OK);
+		return new ResponseEntity<>(userStats, HttpStatus.OK);
 	}
 
 	public ResponseEntity<?> getCountriesByUserId(int id) {
@@ -66,6 +67,7 @@ public class UserService {
 		List<Trip> trips = tripRepository.findByUserId(id);
 		List<String> countries = getDistinctOriginCountries(trips);
 		countries = addDistinctDestinationCountries(countries, trips);
+		Collections.sort(countries);
 
 		return new ResponseEntity<>(countries, HttpStatus.OK);
 	}
