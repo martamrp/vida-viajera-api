@@ -1,2 +1,2 @@
 # vida-viajera
-Proyecto en el cual un usuario podrá logearse, guardar los viajes que haya hecho y visualizarlos ordenados cronologicamente
+Básicamente lo que permite mi apiRest a un usuario es crear sus viajes aportando datos como origen, destino, pais, fechas, precio y motivo(ocio/trabajo). A partir de esta información que será almacenada en una base de datos, el usuario puede visualizar una tabla con todos los viajes registrados, estadísticas, logros e incluso un mapa interactivo donde ver los países visitados. Por supuesto, podrá modificar la informacion de sus viajes o eliminarlos.
