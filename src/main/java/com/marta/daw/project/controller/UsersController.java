@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.marta.daw.project.model.Login;
-import com.marta.daw.project.model.User;
 import com.marta.daw.project.service.UserService;
 
 @CrossOrigin
@@ -24,7 +23,7 @@ public class UsersController {
 	UserService userService;
 	
 	@RequestMapping(path = "login", method = RequestMethod.POST)
-	public ResponseEntity<User> login(@RequestBody @Valid Login login) {
+	public ResponseEntity<?> login(@RequestBody @Valid Login login) {
 		return userService.login(login);
 	}
 

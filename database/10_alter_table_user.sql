@@ -1,0 +1,1 @@
+ALTER TABLE vidaviajera.user ADD password VARCHAR(60) NOT NULL;

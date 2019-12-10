@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.marta.daw.project.model.Login;
@@ -27,15 +28,33 @@ public class UserService {
 	@Autowired
 	RegionRepository regionRepository;
 
-	public ResponseEntity<User> login(Login login) {
-		List<User> userDB = userRepository.findByUsername(login.getUsername());
-		if (userDB.isEmpty()) {
+	public ResponseEntity<?> login(Login login) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		User userDB = userRepository.findFirstByUsername(login.getUsername());
+		
+		if (userDB == null) {
+			User newUser = new User();
+			newUser.setUsername(login.getUsername());
+			newUser.setPassword(passwordEncoder.encode(login.getPassword()));
+			
+			User createdUser = userRepository.save(newUser);
+			
 			User user = new User();
-			user.setUsername(login.getUsername());
+			user.setId(createdUser.getId());
+			user.setUsername(createdUser.getUsername());
 
-			return new ResponseEntity<>(userRepository.save(user), HttpStatus.CREATED);
+			return new ResponseEntity<User>(user, HttpStatus.CREATED);
 		}
-		return new ResponseEntity<>(userDB.get(0), HttpStatus.OK);
+		
+		if(passwordEncoder.matches(login.getPassword(), userDB.getPassword())) {
+			User user = new User();
+			user.setId(userDB.getId());
+			user.setUsername(userDB.getUsername());
+			return new ResponseEntity<User>(user, HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>("Contraseña incorrecta", HttpStatus.BAD_REQUEST);
+		}		
 	}
 
 	public ResponseEntity<?> getTripsByUserId(int id) {
