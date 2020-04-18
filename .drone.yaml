@@ -1,0 +1,44 @@
+kind: pipeline
+name: default
+
+steps:
+- name: build
+  image: maven:3.6.1-jdk-11-slim
+  commands:
+    - mvn package
+- name: bake
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: docker_user
+    password:
+      from_secret: docker_pass
+    repo: registry.anieto.dev/v2/adrian/vida-viajera-api
+    registry: registry.anieto.dev/v2
+    tags: 1.0.0.${CI_BUILD_NUMBER}
+  when:
+    branch:
+    - master
+- name: deploy
+  image: rubasace/drone-k8s
+  environment:
+    K8S_CERT_AUTHORITY_DATA:
+      from_secret: K8S_CERT_AUTHORITY_DATA
+    K8S_SERVER:
+      from_secret: K8S_SERVER
+    K8S_USER:
+      from_secret: K8S_USER
+    K8S_PASSWORD:
+      from_secret: K8S_PASSWORD
+    DOMAIN: anieto.dev
+    NAMESPACE: production
+    SUBDOMAIN: vidaviajera-api
+    PULL_SECRET: regcred
+    DOCKER_REGISTRY: registry.anieto.dev/v2/adrian
+    CONTAINER_PORT: "8080"
+  # commands:
+  # #- sudo mkdir /.kube
+  # #- apk update
+  # - apt-get install -y gettext
+  # - envsubst < .k8s/config_template > .k8s/config
+  # - kubectl get pods -A
