@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${APP_NAME}
+  namespace: ${NAMESPACE}
+spec:
+  replicas: ${REPLICAS}
+  selector:
+    matchLabels:
+      app: ${APP_NAME}
+      serving: "true"
+  template:
+    metadata:
+      name: ${APP_NAME}
+      labels:
+        app: ${APP_NAME}
+        serving: "true"
+    spec:
+      imagePullSecrets:
+        - name: ${PULL_SECRET}
+      containers:
+        - image: ${DOCKER_REGISTRY}/${APP_NAME}:${TAG}
+          name: ${APP_NAME}
+          ports:
+            - containerPort: ${CONTAINER_PORT}
+              name: http
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: mysql-credentials
+          resources:
+            requests:
+              memory: "200Mi"
+              cpu: "250m"
+            limits:
+              memory: "300Mi"
+              cpu: "500m"
